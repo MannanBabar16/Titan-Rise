@@ -9,11 +9,12 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour {
     public CharacterController controller;
+    public Animator anim;
     public Transform cam;
 
     public float speed = 30f;
     public float gravity = -9.81f;
-    public float jumpHeight = 3f;
+    public float jumpHeight = 7f;
     Vector3 velocity;
 
 
@@ -26,23 +27,37 @@ public class ThirdPersonMovement : MonoBehaviour {
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
+
+
     }
 
     void Update() {
-        
+
        
+
         // Jumping
         if (Input.GetKey(KeyCode.Space) && controller.isGrounded) {
           
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            anim.SetBool("isJumping", true);
         }
-
+        else if (controller.isGrounded) {
+            anim.SetBool("isJumping", false);
+        }
         // Apply gravity
         velocity.y += gravity * Time.deltaTime;
 
         // Walking
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+        if (horizontal != 0 || vertical != 0) {
+
+            anim.SetBool("isRunning", true);
+        }
+        else if (horizontal == 0 || vertical == 0) {
+            anim.SetBool("isRunning", false);
+
+        }
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude >= 0.1f) {
@@ -57,8 +72,14 @@ public class ThirdPersonMovement : MonoBehaviour {
             velocity.x = 0;
             velocity.z = 0;
         }
-
+        
         // Move the player
         controller.Move(velocity * Time.deltaTime);
+
+       
+
     }
+
+
+  
 }
