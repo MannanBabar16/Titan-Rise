@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 
 
@@ -12,7 +13,9 @@ public class ThirdPersonMovement : MonoBehaviour {
     public Animator anim;
     public Transform cam;
 
-    public float speed = 30f;
+    public float speed = 5f;
+    public float slowSpeed = 5f;
+    public float fastSpeed = 30f;
     public float gravity = -9.81f;
     public float jumpHeight = 7f;
     Vector3 velocity;
@@ -32,7 +35,13 @@ public class ThirdPersonMovement : MonoBehaviour {
     }
 
     void Update() {
-
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            speed = fastSpeed;
+           
+        }
+        else {
+            speed = slowSpeed;
+        }
        
 
         // Jumping
@@ -47,17 +56,35 @@ public class ThirdPersonMovement : MonoBehaviour {
         // Apply gravity
         velocity.y += gravity * Time.deltaTime;
 
-        // Walking
+        // Moving
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         if (horizontal != 0 || vertical != 0) {
+            if (speed == fastSpeed) {
+            
+                anim.SetBool("isRunning", true);
+                anim.SetBool("isWalking", false);
 
-            anim.SetBool("isRunning", true);
+            }
+           
         }
         else if (horizontal == 0 || vertical == 0) {
             anim.SetBool("isRunning", false);
+            anim.SetBool("isWalking", false);
 
         }
+
+        if(horizontal != 0 || vertical != 0) {
+            if(speed== slowSpeed) {
+                anim.SetBool("isWalking", true);
+                anim.SetBool("isRunning", false);
+            }   
+           
+        }
+
+
+
+
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude >= 0.1f) {
