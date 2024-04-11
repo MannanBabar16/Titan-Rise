@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Security.Cryptography;
 using System.Threading;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ThirdPersonMovement : MonoBehaviour {
     public CharacterController controller;
@@ -24,7 +26,7 @@ public class ThirdPersonMovement : MonoBehaviour {
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-
+    private LivesSystem livesSystem;
     float turnSmoothVelocity;
     public float turnSmoothTime = 0.1f;
 
@@ -35,6 +37,17 @@ public class ThirdPersonMovement : MonoBehaviour {
     }
 
     void Update() {
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        if(currentScene.name == ("Puzzle Level 2") ) {
+            if (transform.position.y < -20) {
+                SceneManager.LoadScene("Puzzle Level 2");
+                livesSystem = FindObjectOfType<LivesSystem>();
+                livesSystem.LoseLife();
+                Cursor.lockState = CursorLockMode.None;
+
+            }
+        }
         if (Input.GetKey(KeyCode.LeftShift)) {
             speed = fastSpeed;
            

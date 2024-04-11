@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: ed3eff9d9d9eba64cbf2922cdbfb4184
+  - enabled: 1
     path: Assets/Scenes/Sea Level 1.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Escape Menu.unity
+    guid: bcc43be1d36166c498aa7d387aa51ddf
+  - enabled: 1
+    path: Assets/Scenes/Puzzle Level 2.unity
+    guid: 63d43346943578746af318f156d65367
   m_configObjects: {}
