@@ -17,7 +17,7 @@ public class Portal1 : MonoBehaviour {
             keySystem.UseKey();
 
             // Load the scene "Puzzle Level 2"
-            SceneManager.LoadScene("Puzzle Level 2");
+            SceneManager.LoadScene("Arcade Level 2");
         }
         else {
             ShowErrorMessage();

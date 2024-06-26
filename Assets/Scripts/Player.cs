@@ -48,7 +48,7 @@ public class ThirdPersonMovement : MonoBehaviour {
 
             }
         }
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        if (Input.GetKey(KeyCode.LeftShift) && controller.isGrounded ) {
             speed = fastSpeed;
            
         }

@@ -9,12 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: ed3eff9d9d9eba64cbf2922cdbfb4184
   - enabled: 1
-    path: Assets/Scenes/Sea Level 1.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Scenes/Escape Menu.unity
     guid: bcc43be1d36166c498aa7d387aa51ddf
   - enabled: 1
-    path: Assets/Scenes/Puzzle Level 2.unity
-    guid: 63d43346943578746af318f156d65367
+    path: Assets/Scenes/Sea Level 1.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Arcade Level 2.unity
+    guid: 20bba31d0bed675488fdfd84471bfe50
+  - enabled: 1
+    path: Assets/Scenes/SpaceShooter Level 4.unity
+    guid: 75b97b089a8fcd34fa77665222877f65
+  - enabled: 1
+    path: Assets/Scenes/News Level 3.unity
+    guid: 97f12edecde3d4e4bb45b55399fe6c84
   m_configObjects: {}
